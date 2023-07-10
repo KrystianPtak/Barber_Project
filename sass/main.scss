@@ -1,0 +1,587 @@
+@use "colors" as *;
+@use "mixins" as *;
+@use "sizes" as *;
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+	scroll-padding-top: 69px;
+}
+body {
+	color: $white;
+	color: $light-white;
+	font-size: 1.6rem;
+	background-color: $dark;
+}
+a {
+	text-decoration: none;
+	color: $light-white;
+}
+
+img {
+	height: auto;
+}
+
+button {
+	border: none;
+	cursor: pointer;
+}
+
+button:focus {
+	outline: none;
+	background-color: rgb(179, 121, 14);
+}
+a:focus {
+	outline: none;
+	text-decoration: underline;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.container {
+	margin: 0 auto;
+	width: 95%;
+}
+
+// nav //
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	width: 100%;
+	padding: 0.5em 0;
+	transition: background-color 0.3s ease;
+	z-index: 999;
+
+	&--bgc {
+		background-color: $dark;
+	}
+
+	&__logo {
+		padding-left: 0.5em;
+		font-size: 3rem;
+		color: $light-white;
+		font-family: "Lobster", cursive;
+	}
+
+	&__links {
+		@include flexCenter(column);
+		gap: 1.5em;
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 100vw;
+		background: url("../img/nav-bgc.jpg") rgba(12, 12, 12, 0.9);
+		@include bgcPosition;
+		transform: translateX(100%);
+		z-index: 1;
+		transition: 0.4s;
+
+		&--active {
+			transform: translateX(0);
+		}
+	}
+
+	&__link {
+		position: relative;
+		padding: 1em;
+		text-transform: uppercase;
+		color: $light-white;
+	}
+}
+
+// burger-btn //
+.burger {
+	font-size: 2.5rem;
+	padding: 0.5em;
+	cursor: pointer;
+	z-index: 999;
+
+	&--hide {
+		display: none;
+		z-index: 99;
+	}
+
+	&--open {
+		transform: translateX(0);
+	}
+}
+
+// header //
+.header {
+	height: 100vh;
+	background: url("../img/header_bg_small.jpg") rgba(0, 0, 0, 0.5);
+	@include bgcPosition;
+	margin-bottom: 2.5em;
+
+	&__text {
+		@include flexCenter(column);
+		height: 100%;
+	}
+
+	&__title {
+		margin-bottom: 1em;
+		font-size: 4.4rem;
+		text-align: center;
+		text-transform: capitalize;
+	}
+
+	&__btn {
+		@include btnStyle;
+		background-color: $main;
+		color: $white;
+	}
+}
+
+// about //
+.about {
+	margin-bottom: 3em;
+
+	&__heading {
+		font-size: $small;
+		text-align: center;
+
+		&--line {
+			@include hrLine;
+			width: 50%;
+			background-color: $main;
+		}
+	}
+
+	&__bgc {
+		display: flex;
+		flex-direction: column;
+		margin-top: 1.5em;
+		gap: 2em;
+	}
+
+	&__img {
+		padding: 0 0.5em;
+		object-fit: cover;
+	}
+
+	&__text {
+		padding: 0 0.5em;
+	}
+
+	&__title {
+		font-size: 2.4rem;
+		margin-bottom: 1em;
+	}
+
+	&__paragraph {
+		line-height: 1.2;
+		margin-bottom: 2em;
+	}
+
+	&__item {
+		display: flex;
+		gap: 0.4em;
+		margin-bottom: 0.5em;
+	}
+}
+
+//services //
+.services {
+	background-color: $light-dark;
+	padding-bottom: 1em;
+
+	&__title {
+		font-size: $small;
+		position: relative;
+		padding-top: 1.5em;
+		text-align: center;
+
+		&--line {
+			@include hrLine;
+			width: 60%;
+			background-color: $main;
+		}
+	}
+
+	&__container {
+		margin-top: 2em;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__icons {
+		@include flexCenter(column);
+		margin-bottom: 2.4em;
+		gap: 0.5em;
+	}
+
+	&__icon {
+		width: 60px;
+		height: 60px;
+		padding: 9px;
+		background-color: $icon-bg;
+		border-radius: 50%;
+		object-fit: contain;
+		transition: all 0.4s ease;
+	}
+
+	&__img {
+		display: none;
+		padding-bottom: 3em;
+	}
+}
+
+// transfomrm//
+.transform {
+	height: 50vh;
+	background: url(../img/transform.jpg) rgba(0, 0, 0, 0.8);
+	@include bgcPosition;
+	background-attachment: fixed;
+	margin-bottom: 2.5em;
+
+	&__body {
+		@include flexCenter(column);
+		height: 100%;
+		padding: 0 0.5em;
+	}
+
+	&__title {
+		margin-bottom: 0.5em;
+		font-size: $small;
+		text-align: center;
+		text-transform: capitalize;
+		letter-spacing: 0.7px;
+	}
+
+	&__text {
+		text-align: center;
+		margin-bottom: 2em;
+		letter-spacing: 0.7px;
+	}
+
+	&__btn {
+		@include btnStyle;
+		background-color: $main;
+		color: $white;
+	}
+}
+
+// team //
+.team {
+	&__title {
+		text-align: center;
+		font-size: $small;
+
+		&--line {
+			@include hrLine;
+			width: 50%;
+			background-color: $main;
+		}
+	}
+
+	&__body {
+		@include flexCenter(column);
+		gap: 2em;
+		padding: 3.5em 0;
+	}
+
+	&__card {
+		position: relative;
+		height: 450px;
+		max-width: 450px;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	&__img {
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+		object-fit: cover;
+		border-radius: 3px;
+		transition: 0.5s;
+	}
+
+	&__text {
+		@include flexCenter(column);
+		position: absolute;
+		height: 70px;
+		width: 100%;
+		padding-top: 1em;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.5);
+		transition: 0.5s;
+	}
+
+	&__icons {
+		@include flexCenter(row);
+		gap: 0.7em;
+		margin-top: 0.3em;
+	}
+}
+
+// testimonials //
+.testimonials {
+	@include flexCenter(column);
+	height: 50vh;
+	background: url("../img/header_bg_small.jpg") rgba(0, 0, 0, 0.8);
+	@include bgcPosition;
+	overflow: hidden;
+	margin-top: 2.5em;
+
+	&__title {
+		text-align: center;
+		font-size: $small;
+
+		&--line {
+			@include hrLine;
+			width: 60%;
+			background-color: $main;
+		}
+	}
+
+	&__body {
+		width: 700px;
+		overflow: hidden;
+	}
+
+	&__slider {
+		display: flex;
+		width: fit-content;
+		transition: transform 1s ease;
+	}
+
+	&__slide {
+		@include flexCenter(column);
+		flex: 0 0 700px;
+		transform: translateX(100%);
+		transition: transform 0.8s ease;
+
+		&--active {
+			transform: translateX(0);
+		}
+
+		&--previous {
+			transform: translateX(-100%);
+		}
+	}
+
+	&__img {
+		width: 70px;
+		height: 70px;
+		object-fit: cover;
+		object-position: bottom;
+		border-radius: 50%;
+		margin-bottom: 0.5em;
+	}
+
+	&__name {
+		margin-bottom: 0.7em;
+	}
+	&__text {
+		text-align: center;
+		font-size: 1.4rem;
+		padding: 0 0.5em;
+		max-width: 300px;
+	}
+}
+
+// open //
+.open {
+	padding: 3em 0.5em;
+
+	&__title {
+		font-size: $small;
+		text-align: center;
+
+		&--line {
+			@include hrLine;
+			width: 70%;
+			background-color: $main;
+		}
+	}
+
+	&__text {
+		margin: 1em 0 2em;
+		color: $gray;
+		text-align: center;
+	}
+	&__hours {
+		display: flex;
+		justify-content: space-between;
+		padding: 2em 0 0.8em;
+		border-bottom: 1px solid;
+		width: 100%;
+	}
+}
+
+// contact //
+.contact {
+	background-color: $light-dark;
+	padding: 4em 0;
+
+	&__container {
+		@include flexCenter(column);
+		gap: 2em;
+	}
+
+	&__information {
+		@include flexCenter(column);
+		gap: 0.5em;
+	}
+
+	&__icon {
+		margin-right: 0.5em;
+		color: $main;
+	}
+
+	&__media {
+		@include flexCenter(column);
+		gap: 0.7em;
+		margin-bottom: 1.5em;
+	}
+
+	&__logo {
+		font-family: "Lobster", cursive;
+		font-size: 3.4rem;
+	}
+
+	&__text {
+		max-width: 300px;
+		margin-bottom: 1em;
+	}
+
+	&__social {
+		display: flex;
+		gap: 0.7em;
+		font-size: 2rem;
+
+		&--icon {
+			transition: color 0.3s ease;
+		}
+
+		&--icon:hover {
+			cursor: pointer;
+			color: $main;
+		}
+	}
+
+	&__links {
+		@include flexCenter(column);
+		gap: 1em;
+		text-transform: uppercase;
+	}
+}
+
+// modal //
+.modal {
+	position: relative;
+	width: 90%;
+
+	&__bgc {
+		@include flexCenter(row);
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(34, 34, 34, 0.699);
+
+		&--hidden {
+			display: none;
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		font-size: 2rem;
+		color: $white;
+		cursor: pointer;
+	}
+
+	&__body {
+		@include flexCenter(column);
+		gap: 1em;
+		padding: 2em 0;
+		background-color: $dark;
+	}
+
+	&__title {
+		font-size: 2rem;
+		text-align: center;
+	}
+
+	&__text {
+		text-align: center;
+		font-size: 1.4rem;
+	}
+
+	&__inputs {
+		width: 80%;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+	}
+
+	&__input {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+
+		input {
+			padding: 0.5em;
+		}
+
+		span {
+			position: absolute;
+			font-size: 1.2rem;
+			color: red;
+			right: 5px;
+		}
+	}
+
+	&--border {
+		border: 1px solid red;
+	}
+
+	&__btn {
+		@include btnStyle;
+		background-color: $main;
+		color: $white;
+	}
+}
+
+// scroll-btn //
+.scroll-btn {
+	position: fixed;
+	bottom: 10px;
+	right: 20px;
+	font-size: 4rem;
+	cursor: pointer;
+	opacity: 0;
+	transition: all 0.4s ease;
+
+	&--arrow {
+		opacity: 1;
+	}
+}
+
+// footer //
+
+.footer {
+	padding: 0.8em;
+	text-align: center;
+}
+
+@import "./small";
+@import "./medium";
+@import "./large";

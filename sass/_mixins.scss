@@ -1,0 +1,28 @@
+@mixin flexCenter($direction) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin btnStyle {
+	padding: 0.8em 1.6em;
+	font-size: 1.4rem;
+	border: none;
+	border-radius: 8px;
+	text-transform: uppercase;
+}
+
+@mixin hrLine {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 2px;
+	border: none;
+}
+
+@mixin bgcPosition {
+	background-blend-mode: darken;
+	background-position: center;
+	background-size: cover;
+}

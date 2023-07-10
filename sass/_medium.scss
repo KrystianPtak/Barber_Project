@@ -1,0 +1,327 @@
+@use "colors" as *;
+@use "mixins" as *;
+@use "sizes" as *;
+
+@media screen and (min-width: 768px) {
+	html {
+		scroll-padding-top: unset;
+	}
+
+	.container {
+		max-width: 1200px;
+	}
+
+	.burger {
+		display: none;
+	}
+
+	.nav {
+		position: relative;
+		background: transparent;
+		padding: 1em;
+
+		&__logo {
+			font-size: 3.5rem;
+		}
+
+		&__links {
+			flex-direction: row;
+			gap: 0.7em;
+			position: relative;
+			padding-right: 0.5em;
+			height: unset;
+			width: unset;
+			background: unset;
+			transition: 0.4s;
+			transform: translateX(0);
+		}
+
+		&__link {
+			padding: 0 0.5em;
+
+			&::before {
+				content: "";
+				position: absolute;
+				bottom: -3px;
+				left: 0;
+				height: 1.5px;
+				width: 100%;
+				background-color: $main;
+				transform: scaleX(0);
+				transition: transform 0.3s ease-in;
+			}
+
+			&:hover::before {
+				transform: scaleX(0.8);
+			}
+		}
+	}
+
+	.header {
+		background: url("../img/header_bg_large.jpg") rgba(0, 0, 0, 0.5);
+		&__title {
+			max-width: 700px;
+			font-size: 6.2rem;
+		}
+		&__btn {
+			padding: 1em 2.4em;
+			font-size: 1.6rem;
+			transition: background-color 0.4s ease;
+			border: 2px solid transparent;
+
+			&:hover {
+				background: transparent;
+				border: 2px solid $main;
+				color: $main;
+			}
+		}
+	}
+
+	.about {
+		display: flex;
+		overflow: hidden;
+
+		&__heading {
+			font-size: $medium;
+
+			&--line {
+				width: 30%;
+			}
+		}
+
+		&__bgc {
+			margin: 3em 0;
+			@include flexCenter(row);
+		}
+
+		&__img {
+			display: block;
+			width: 400px;
+			transform: translateX(-600px);
+			opacity: 0;
+			transition: opacity 2s, transform 1.5s;
+		}
+
+		&__text {
+			max-width: 500px;
+			font-size: 1.6rem;
+			transform: translateX(700px);
+			opacity: 0;
+			transition: opacity 2s, transform 1.5s;
+		}
+
+		&__title {
+			font-size: $medium;
+		}
+	}
+
+	.services {
+		overflow: hidden;
+
+		&__title {
+			font-size: $medium;
+
+			&--line {
+				width: 40%;
+			}
+		}
+
+		&__container {
+			@include flexCenter(row);
+			gap: 1.7em;
+			margin-top: 3em;
+		}
+
+		&__icons {
+			&--left {
+				transform: translateX(-400px);
+				opacity: 0;
+				transition: opacity 2s, transform 1.5s;
+			}
+
+			&--right {
+				transform: translateX(400px);
+				opacity: 0;
+				transition: opacity 2s, transform 1.5s;
+			}
+		}
+
+		&__icons {
+			margin-bottom: 5em;
+			@include flexCenter(column);
+
+			&:hover .services__icon {
+				background-color: $main;
+				transform: rotate(180deg);
+			}
+		}
+
+		&__img {
+			display: block;
+			width: 400px;
+			object-fit: cover;
+			padding-bottom: 5em;
+		}
+	}
+
+	.transform {
+		height: 40vh;
+
+		&__title {
+			font-size: $medium;
+		}
+
+		&__btn {
+			font-size: 1.6rem;
+			border: 2px solid transparent;
+			transition: background-color 0.4s ease;
+
+			&:hover {
+				background: transparent;
+				border: 2px solid $main;
+				color: $main;
+			}
+		}
+	}
+
+	.team {
+		overflow: hidden;
+		margin-bottom: 2.5em;
+
+		&__title {
+			font-size: $medium;
+
+			&--line {
+				width: 40%;
+			}
+		}
+
+		&__body {
+			display: flex;
+			flex-direction: row;
+		}
+
+		&__card {
+			height: 400px;
+			box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+
+			&--first {
+				transform: translateX(-600px);
+				opacity: 0;
+				transition: opacity 2s, transform 1.5s;
+			}
+
+			&--third {
+				transform: translateX(700px);
+				opacity: 0;
+				transition: opacity 2s, transform 1.5s;
+			}
+		}
+
+		&__card:hover &__text {
+			height: 100%;
+		}
+		&__card:hover &__icons {
+			opacity: 1;
+		}
+		&__card:hover &__img {
+			transform: scale(1.1);
+		}
+
+		&__icons {
+			opacity: 0;
+			i {
+				transition: color 0.3s ease;
+			}
+			i:hover {
+				cursor: pointer;
+				color: $main;
+			}
+		}
+	}
+
+	.open {
+		margin-bottom: 2.5em;
+		&__title {
+			font-size: $medium;
+
+			&--line {
+				width: 50%;
+			}
+		}
+		&__hours {
+			transition: border-bottom 0.3s ease;
+			&:hover {
+				border-bottom: 1px solid $main;
+			}
+		}
+	}
+
+	.contact {
+		&__container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+
+			& > * {
+				flex: 1;
+			}
+		}
+
+		&__information {
+			gap: 1em;
+		}
+
+		&__logo {
+			font-size: 5rem;
+		}
+		&__text {
+			max-width: 300px;
+		}
+
+		&__links {
+			gap: 0.8em;
+		}
+
+		&__link {
+			transition: color 0.3s ease;
+			&:hover {
+				color: $main;
+			}
+		}
+	}
+
+	.reveal {
+		position: relative;
+		transform: translateY(150px);
+		opacity: 0;
+		transition: all 1.5s ease;
+	}
+	.reveal.active {
+		transform: translateY(0);
+		opacity: 1;
+	}
+
+	.about__item {
+		display: flex;
+		gap: 0.4em;
+	}
+
+	.testimonials {
+		&__title {
+			font-size: $medium;
+
+			&--line {
+				width: 30%;
+			}
+		}
+	}
+
+	.modal {
+		width: 600px;
+	}
+
+	.footer {
+		padding: 1.5em;
+	}
+}

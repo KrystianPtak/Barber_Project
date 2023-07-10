@@ -1,0 +1,31 @@
+@use "colors" as *;
+@use "mixins" as *;
+
+@media (min-width: 576px) {
+	.about {
+		&__bgc {
+			align-items: center;
+		}
+		&__img {
+			width: 70%;
+		}
+	}
+
+	.services {
+		&__container {
+			flex-direction: row;
+			justify-content: space-around;
+		}
+	}
+
+	.transform {
+		height: 50vh;
+	}
+
+	.testimonials {
+		&__text {
+			font-size: 1.6rem;
+			max-width: unset;
+		}
+	}
+}
