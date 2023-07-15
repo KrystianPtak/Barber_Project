@@ -30,13 +30,15 @@ burgerBtn.addEventListener("click", () => {
 	});
 });
 
-
-
 //********** TOP **********
 const scrollToTop = document.querySelector(".scroll-btn");
 
-window.addEventListener("scroll", () => {
-	scrollToTop.classList.toggle("scroll-btn--arrow", window.scrollY > 400);
+window.addEventListener("scroll", function() {
+  if (window.scrollY > 400) {
+    scrollToTop.classList.add("scroll-btn--arrow");
+  } else {
+    scrollToTop.classList.remove("scroll-btn--arrow");
+  }
 });
 
 scrollToTop.addEventListener("click", () => {
@@ -46,11 +48,9 @@ scrollToTop.addEventListener("click", () => {
 	});
 });
 
-
-
 // **********REVEAL ON SCROLL**********
 const reveal = () => {
-	const elements = document.querySelectorAll(".reveal, .move, .move1");
+	const elements = document.querySelectorAll(".reveal, .move, .moves");
 	const windowHeight = window.innerHeight;
 	const revealPoint = 150;
 	const revealPoint2 = 20;
@@ -62,12 +62,12 @@ const reveal = () => {
 			element.classList.add("active");
 		}
 
-		if (element.classList.contains("move") && revealTop < windowHeight - revealPoint2) {
-			element.style.opacity = "1";
-			element.style.transform = "translateX(0)";
-		}
-
-		if (element.classList.contains("move1") && revealTop < windowHeight - revealPoint) {
+		if (
+			(element.classList.contains("move") &&
+				revealTop < windowHeight - revealPoint2) ||
+			(element.classList.contains("moves") &&
+				revealTop < windowHeight - revealPoint)
+		) {
 			element.style.opacity = "1";
 			element.style.transform = "translateX(0)";
 		}
@@ -76,15 +76,14 @@ const reveal = () => {
 
 window.addEventListener("scroll", reveal);
 
-
-
 //********** MODAL **********
 const modal = document.querySelector(".modal__bgc");
 const closeModal = document.querySelector(".modal__icon");
 const openModal = document.querySelector(".header__btn");
 const transformBtn = document.querySelector(".transform__btn");
-const cotanctName = document.getElementById("contact-name");
-const cotanctPhone = document.getElementById("contact-phone");
+const cotanctName = document.querySelector(".modal__contact-name");
+const cotanctPhone = document.querySelector(".modal__contact-phone");
+
 
 const handleModalOpen = () => {
 	modal.classList.remove("modal__bgc--hidden");
@@ -98,7 +97,7 @@ const handleModalClose = () => {
 };
 
 const handleModalClick = (e) => {
-	if (!e.target.closest(".modal")) {
+	if (e.target === modal) {
 		handleModalClose();
 	}
 };
@@ -109,7 +108,6 @@ const handleKeyDown = (e) => {
 	}
 };
 
-
 openModal.addEventListener("click", handleModalOpen);
 transformBtn.addEventListener("click", handleModalOpen);
 closeModal.addEventListener("click", handleModalClose);
@@ -118,13 +116,13 @@ window.addEventListener("keydown", handleKeyDown);
 ///////
 
 const modalBtn = document.querySelector(".modal__btn");
-const nameError = document.getElementById("name-error");
-const phoneError = document.getElementById("phone-error");
-const submitError = document.getElementById("submit-error");
+const nameError = document.querySelector(".modal__name-error");
+const phoneError = document.querySelector(".modal__phone-error");
+const submitError = document.querySelector(".modal__submit-error");
 
 const keyDown = (e) => {
 	if (e.key === "Enter") {
-	forms(e)
+		forms(e);
 	}
 };
 
@@ -157,8 +155,6 @@ function forms(e) {
 }
 
 modalBtn.addEventListener("click", forms);
-
-
 
 // ********** SLIDER **********
 const slider = document.querySelector(".testimonials__slider");
@@ -193,7 +189,7 @@ function slideTo(index) {
 
 function nextSlide() {
 	if (currentIndex === slides.length - 1) {
-		slideTo(0); 
+		slideTo(0);
 	} else {
 		slideTo(currentIndex + 1);
 	}
@@ -201,15 +197,13 @@ function nextSlide() {
 
 function previousSlide() {
 	if (currentIndex === 0) {
-		slideTo(slides.length - 1); 
+		slideTo(slides.length - 1);
 	} else {
 		slideTo(currentIndex - 1);
 	}
 }
 
 setInterval(nextSlide, 3000);
-
-
 
 //**********FOOTER DATE **********
 const currentYear = document.querySelector(".year");
