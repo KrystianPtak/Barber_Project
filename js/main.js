@@ -53,7 +53,7 @@ const reveal = () => {
 	const elements = document.querySelectorAll(".reveal, .move, .moves");
 	const windowHeight = window.innerHeight;
 	const revealPoint = 150;
-	const revealPoint2 = 20;
+	const revealPointSmall = 20;
 
 	elements.forEach((element) => {
 		const revealTop = element.getBoundingClientRect().top;
@@ -63,7 +63,7 @@ const reveal = () => {
 		}
 		if (
 			(element.classList.contains("move") &&
-				revealTop < windowHeight - revealPoint2) ||
+				revealTop < windowHeight - revealPointSmall) ||
 			(element.classList.contains("moves") &&
 				revealTop < windowHeight - revealPoint)
 		) {
