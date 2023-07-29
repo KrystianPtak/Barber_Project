@@ -249,12 +249,6 @@
 				width: 50%;
 			}
 		}
-		&__hours {
-			transition: border-bottom 0.3s ease;
-			&:hover {
-				border-bottom: 1px solid $main;
-			}
-		}
 	}
 
 	.contact {
@@ -266,10 +260,6 @@
 			& > * {
 				flex: 1;
 			}
-		}
-
-		&__information {
-			gap: 1em;
 		}
 
 		&__logo {

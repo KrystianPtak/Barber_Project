@@ -33,12 +33,12 @@ burgerBtn.addEventListener("click", () => {
 //********** TOP **********
 const scrollToTop = document.querySelector(".scroll-btn");
 
-window.addEventListener("scroll", function() {
-  if (window.scrollY > 400) {
-    scrollToTop.classList.add("scroll-btn--arrow");
-  } else {
-    scrollToTop.classList.remove("scroll-btn--arrow");
-  }
+window.addEventListener("scroll", function () {
+	if (window.scrollY > 400) {
+		scrollToTop.classList.add("scroll-btn--arrow");
+	} else {
+		scrollToTop.classList.remove("scroll-btn--arrow");
+	}
 });
 
 scrollToTop.addEventListener("click", () => {
@@ -61,7 +61,6 @@ const reveal = () => {
 		if (revealTop < windowHeight - revealPoint) {
 			element.classList.add("active");
 		}
-
 		if (
 			(element.classList.contains("move") &&
 				revealTop < windowHeight - revealPoint2) ||
@@ -73,7 +72,6 @@ const reveal = () => {
 		}
 	});
 };
-
 window.addEventListener("scroll", reveal);
 
 //********** MODAL **********
@@ -83,7 +81,6 @@ const openModal = document.querySelector(".header__btn");
 const transformBtn = document.querySelector(".transform__btn");
 const cotanctName = document.querySelector(".modal__contact-name");
 const cotanctPhone = document.querySelector(".modal__contact-phone");
-
 
 const handleModalOpen = () => {
 	modal.classList.remove("modal__bgc--hidden");
@@ -113,7 +110,6 @@ transformBtn.addEventListener("click", handleModalOpen);
 closeModal.addEventListener("click", handleModalClose);
 modal.addEventListener("click", handleModalClick);
 window.addEventListener("keydown", handleKeyDown);
-///////
 
 const modalBtn = document.querySelector(".modal__btn");
 const nameError = document.querySelector(".modal__name-error");
@@ -136,7 +132,6 @@ function forms(e) {
 		nameError.textContent = "";
 		cotanctName.classList.remove("modal--border");
 	}
-
 	if (cotanctPhone.value === "") {
 		phoneError.textContent = "Phone is required";
 		cotanctPhone.classList.add("modal--border");
@@ -144,7 +139,6 @@ function forms(e) {
 		phoneError.textContent = "";
 		cotanctPhone.classList.remove("modal--border");
 	}
-
 	if (cotanctName.value !== "" && cotanctPhone.value !== "") {
 		submitError.textContent = "Your message was sent successfully";
 		submitError.style.color = "green";
@@ -153,7 +147,6 @@ function forms(e) {
 		}, 4000);
 	}
 }
-
 modalBtn.addEventListener("click", forms);
 
 // ********** SLIDER **********
@@ -202,8 +195,26 @@ function previousSlide() {
 		slideTo(currentIndex - 1);
 	}
 }
-
 setInterval(nextSlide, 3000);
+
+//**********COPY EMAIL**********
+const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+const contactMessage = document.querySelector(".contact__message");
+
+emailLinks.forEach((link) => {
+	link.addEventListener("click", async (event) => {
+		event.preventDefault();
+		const email = link.getAttribute("href").replace("mailto:", "");
+
+		try {
+			await navigator.clipboard.writeText(email);
+			contactMessage.style.display = "block";
+			setTimeout(() => {
+				contactMessage.style.display = "none";
+			}, 2000);
+		} catch (err) {}
+	});
+});
 
 //**********FOOTER DATE **********
 const currentYear = document.querySelector(".year");

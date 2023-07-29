@@ -490,6 +490,11 @@ ul {
   gap: 1em;
   text-transform: uppercase;
 }
+.contact__message {
+  display: none;
+  font-size: 1.2rem;
+  text-align: center;
+}
 
 .modal {
   position: relative;
@@ -821,12 +826,6 @@ ul {
   .open__title--line {
     width: 50%;
   }
-  .open__hours {
-    transition: border-bottom 0.3s ease;
-  }
-  .open__hours:hover {
-    border-bottom: 1px solid #d67c27;
-  }
   .contact__container {
     display: flex;
     flex-direction: row;
@@ -834,9 +833,6 @@ ul {
   }
   .contact__container > * {
     flex: 1;
-  }
-  .contact__information {
-    gap: 1em;
   }
   .contact__logo {
     font-size: 5rem;
